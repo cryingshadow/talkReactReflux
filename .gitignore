@@ -8,4 +8,5 @@
 *.gz
 *~
 build/*
-
+.idea/
+workspace.xml
