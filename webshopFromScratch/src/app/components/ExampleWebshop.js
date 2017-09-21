@@ -1,15 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Reflux from 'reflux';
+import ArticleStore from '../stores/ArticleStore';
+import Actions from '../Actions';
+import Article from './Article';
 
-class ExampleWebshop extends Component {
+class ExampleWebshop extends Reflux.Component {
 
-    render() {
-        return (
-            <div>
-                <span>This is a test!</span>
-            </div>
-        )
+    constructor(props) {
+        console.log("ExampleWebshop constructor");
+        super(props);
+        this.store = ArticleStore;
+        this.state = {}; // The state will be determined by the reflux store
     }
 
+    componentDidMount() {
+        Actions.loadArticles();
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+    }
+
+    render() {
+        console.log("ExampleWebshop render");
+        return (
+            <div>
+                <div className="row mt-3">
+                    {this.state.articles.map(article =>
+                        <Article key={"article" + article.id} article={article} />
+                    )}
+                </div>
+            </div>
+        );
+    }
 }
 
 export default ExampleWebshop

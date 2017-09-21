@@ -13,7 +13,8 @@ module.exports = {
 
     output: {
         path: path.resolve(ROOT_PATH, 'build'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        contentBase: './'
     },
 
     plugins: [
@@ -32,11 +33,10 @@ module.exports = {
                     presets: ['es2015', 'react']
                 }
             },
-
             {
-                test: /\.css$/,
+                test: /\.(css|scss)$/,
                 loaders: ['style', 'css']
-            }
+            },
         ]
     }
 };
