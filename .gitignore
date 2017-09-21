@@ -7,6 +7,6 @@
 *.toc
 *.gz
 *~
-build/*
+build/
 .idea/
-workspace.xml
+**/workspace.xml
