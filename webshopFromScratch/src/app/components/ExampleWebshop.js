@@ -8,22 +8,15 @@ import './ExampleWebshop.scss';
 class ExampleWebshop extends Reflux.Component {
 
     constructor(props) {
-        console.log("ExampleWebshop constructor");
         super(props);
         this.store = ArticleStore;
-        this.state = {}; // The state will be determined by the reflux store
     }
 
     componentDidMount() {
         Actions.loadArticles();
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return true;
-    }
-
     render() {
-        console.log("ExampleWebshop render");
         return (
             <div>
                 <div className="row webshop-header">

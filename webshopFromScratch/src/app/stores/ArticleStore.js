@@ -5,7 +5,6 @@ import ArticleClient from '../clients/ArticleClient';
 class ArticleStore extends Reflux.Store {
 
     constructor() {
-        console.log("ArticleStore constructor");
         super();
         this.state = {
             articles: []
@@ -15,7 +14,6 @@ class ArticleStore extends Reflux.Store {
     }
 
     loadArticles() {
-        console.log("ArticleStore loadArticles");
         const loadCompleted = this.loadCompleted.bind(this);
         const loadFailed = this.loadFailed.bind(this);
 
@@ -25,15 +23,13 @@ class ArticleStore extends Reflux.Store {
     }
 
     loadCompleted(newArticles) {
-        console.log("ArticleStore loadCompleted: ", newArticles);
         this.setState({
             articles: newArticles
         });
-        console.log("ArticleStore loadCompleted and state set");
     }
 
     loadFailed(response) {
-        console.log("Could not load article data: ", response);
+        console.log("Could not load the article data: ", response);
     }
 }
 

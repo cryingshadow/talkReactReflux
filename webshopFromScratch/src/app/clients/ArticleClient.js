@@ -17,12 +17,9 @@ const mockArticles = [
     }
 ];
 
+// Instead of loading articles here (long running operation) we just return the mock articles
 exports.loadArticles = function() {
-    console.log("ArticleClient loadArticles");
-
-    // Instead of loading articles here (long running operation) we just return the mock articles
     return new Promise(function (resolve, reject) {
-        console.log("ArticleClient loadArticles sucessfull!");
         resolve(mockArticles);
     });
 };
