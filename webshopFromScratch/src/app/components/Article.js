@@ -1,6 +1,6 @@
 import React from 'react';
 import Reflux from 'reflux';
-import './Article.scss'
+import './Article.scss';
 
 class Article extends Reflux.Component {
 
@@ -15,7 +15,7 @@ class Article extends Reflux.Component {
         console.log("Article render: ", article);
         return (
             <div key={article.id} className="col-sm-6 col-md-3">
-                <div className="article " >
+                <div className="article" >
                     <img src={article.image} alt={article.name} />
                     <div className="image_overlay"></div>
                     <div className="view_details" onClick={() => console.log("Clicky clicky!")}>

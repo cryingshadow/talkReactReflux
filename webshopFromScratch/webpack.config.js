@@ -14,7 +14,8 @@ module.exports = {
     output: {
         path: path.resolve(ROOT_PATH, 'build'),
         filename: 'bundle.js',
-        contentBase: './'
+        contentBase: './',
+        publicPath: '/'
     },
 
     plugins: [
@@ -35,7 +36,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                loaders: ['style', 'css']
+                loaders: ['style', 'css', 'sass-loader']
             },
         ]
     }

@@ -1,6 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import ExampleWebshop from './components/ExampleWebshop';
+import 'bootstrap/dist/css/bootstrap.css';
+import './main.scss';
 
 // init shell
 initShell();
