@@ -60,9 +60,21 @@ In this talk, we will have a look at general patterns how to use React component
 \end{center}
 \end{frame}
 
-\begin{frame}\frametitle{Frame Title}
+\begin{frame}\frametitle{Data Flow}
 \centering
-Content
+\begin{tikzpicture}
+[node/.style={rectangle,draw=black,thick,inner sep=5pt},
+edge/.style={->,thick},
+connect/.style={->,thick,dashed}]
+\node[node] (action) {Action};
+\node[node] (component) [below left=2 of action] {Component};
+\node[node] (store) [below right=2 of action] {Store};
+\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);
+\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);
+\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);
+\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);
+\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);
+\end{tikzpicture}
 \end{frame}
 
 \begin{frame}\frametitle{Frame Title}
