@@ -60,6 +60,16 @@ In this talk, we will have a look at general patterns how to use React component
 \end{center}
 \end{frame}
 
+\begin{frame}\frametitle{Purpose}
+\centering
+\begin{itemize}
+\item declarative view abstraction
+\item decoupling
+\item easy testing
+\item fast rendering
+\end{itemize}
+\end{frame}
+
 \begin{frame}\frametitle{Data Flow}
 \centering
 \begin{tikzpicture}
@@ -77,49 +87,29 @@ connect/.style={->,thick,dashed}]
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}\frametitle{Frame Title}
+\begin{frame}\frametitle{Components}
 \centering
-Content
+\begin{tikzpicture}
+\node (component) {Component};
+\node [below right=of component] {props};
+\node [below left=of component] {state};
+\node [below=of component] {rendering};
+\node [above=of component] {React vs. Reflux};
+\end{tikzpicture}
 \end{frame}
 
-\begin{frame}\frametitle{Frame Title}
+\begin{frame}\frametitle{Actions}
 \centering
-Content
+\begin{tikzpicture}
+\node (action) {Action};
+\end{tikzpicture}
 \end{frame}
 
-\begin{frame}\frametitle{Frame Title}
+\begin{frame}\frametitle{Stores}
 \centering
-Content
-\end{frame}
-
-\begin{frame}\frametitle{Frame Title}
-\centering
-Content
-\end{frame}
-
-\begin{frame}\frametitle{Frame Title}
-\centering
-Content
-\end{frame}
-
-\begin{frame}\frametitle{Frame Title}
-\centering
-Content
-\end{frame}
-
-\begin{frame}\frametitle{Frame Title}
-\centering
-Content
-\end{frame}
-
-\begin{frame}\frametitle{Frame Title}
-\centering
-Content
-\end{frame}
-
-\begin{frame}\frametitle{Frame Title}
-\centering
-Content
+\begin{tikzpicture}
+\node (store) {Store};
+\end{tikzpicture}
 \end{frame}
 
 \end{document}
