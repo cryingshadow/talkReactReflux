@@ -152,6 +152,8 @@ shape border rotate=225,fill=red,minimum height=2cm,path fading=fade left,fading
 \node (renderarrow) [below=0.1 of component,single arrow,shape border uses incircle,
 shape border rotate=270,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};
 \node [below=0.1 of renderarrow] {rendering};
+\node (setarrow) [right=0.1 of component,single arrow,fill=red,minimum height=2cm,path fading=fade left] {};
+\node [right=0.1 of setarrow] {setStore(s)};
 \node [above=2.5 of component] {extend React components};
 \node [below left=0.5 of component] {\begin{minipage}{3cm}\begin{center}only\\interaction\\logic\end{center}\end{minipage}};
 \node [below right=0.5 of component] {\begin{minipage}{3cm}\begin{center}treat state as\\read-only\end{center}\end{minipage}};
