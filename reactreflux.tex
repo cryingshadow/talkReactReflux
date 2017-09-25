@@ -91,10 +91,11 @@ connect/.style={->,thick,dashed}]
 \centering
 \begin{tikzpicture}
 \node (component) {Component};
-\node [below right=of component] {props};
-\node [below left=of component] {state};
+\node [above right=of component] {props};
+\node [above left=of component] {state};
 \node [below=of component] {rendering};
 \node [above=of component] {React vs. Reflux};
+\node [below right=of component] {only interaction logic};
 \end{tikzpicture}
 \end{frame}
 
@@ -102,6 +103,9 @@ connect/.style={->,thick,dashed}]
 \centering
 \begin{tikzpicture}
 \node (action) {Action};
+\node [below=of action] {function};
+\node [below left=of action] {called by component};
+\node [below right=of action] {transports payload};
 \end{tikzpicture}
 \end{frame}
 
@@ -109,6 +113,10 @@ connect/.style={->,thick,dashed}]
 \centering
 \begin{tikzpicture}
 \node (store) {Store};
+\node [below=of store] {state handler};
+\node [below left=of store] {listens to actions};
+\node [below right=of store] {sets state of components};
+\node [right=of store] {only data logic};
 \end{tikzpicture}
 \end{frame}
 
