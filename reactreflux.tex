@@ -42,7 +42,7 @@ React is currently one of the most popular ingredients of modern web application
 In this talk, we will have a look at general patterns how to use React components together with Reflux stores and actions to build a responsive web application. Here, the focus is on state: When and where to (not) have it and how to deal with it using the facilities React and Reflux are offering. We illustrate these concepts with a small web shop example. In addition to that, we also address common mistakes and how to avoid them.
 \end{comment}
 
-\begin{frame}\frametitle{Motivation - Why React?}
+\begin{frame}\frametitle{Why React?}
 \centering
 \begin{tikzpicture}
 \node[anchor=north west] (text1) at (0,6.1) {declarative view abstraction};
@@ -58,6 +58,33 @@ In this talk, we will have a look at general patterns how to use React component
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}\frametitle{React Components}
+\centering
+\tikzfading[name=fade left,
+right color=transparent!0,
+left color=transparent!100]
+\begin{tikzpicture}
+\node (component) {Component};
+\visible<3->{\node (proparrow) [above left=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=315,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
+\visible<3->{\node [above left=0.1 of proparrow] {\phantom{t}props};}
+\visible<5->{\node (statearrow) [above right=0.1 of component,double arrow,shape border uses incircle,
+shape border rotate=225,fill=red,minimum height=2cm] {};}
+\visible<5->{\node [above right=0.1 of statearrow] {state\phantom{p}};}
+\visible<2->{\node (renderarrow) [below=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=270,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};}
+\visible<2->{\node [below=0.1 of renderarrow] {rendering};}
+\visible<4->{\node (lifearrow) [above=0.1 of component,double arrow,shape border uses incircle,shape border rotate=90,
+fill=red,minimum height=2cm] {};}
+\visible<4->{\node [above=0.1 of lifearrow] {lifecycle};}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}\frametitle{React Components \textendash{} Example}
+\centering
+Code!
+\end{frame}
+
 \begin{frame}\frametitle{Components}
 \centering
 \tikzfading[name=fade left,
@@ -65,19 +92,41 @@ right color=transparent!0,
 left color=transparent!100]
 \begin{tikzpicture}
 \node (component) {Component};
-\node (proparrow) [above left=0.1 of component,single arrow,shape border uses incircle,shape border rotate=315,
-fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};
+\node (proparrow) [above left=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=315,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};
 \node [above left=0.1 of proparrow] {\phantom{t}props};
-\node (statearrow) [above right=0.1 of component,single arrow,shape border uses incircle,shape border rotate=225,
-fill=red,minimum height=2cm,path fading=fade left,fading transform={rotate=225}] {};
+\visible<3->{\node (statearrow) [above right=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=225,fill=red,minimum height=2cm,path fading=fade left,fading transform={rotate=225}] {};}
+\visible<-2>{\node (statearrow2) [above right=0.1 of component,double arrow,shape border uses incircle,
+shape border rotate=225,fill=red,minimum height=2cm] {};}
 \node [above right=0.1 of statearrow] {state\phantom{p}};
-\node (renderarrow) [below=0.1 of component,single arrow,shape border uses incircle,shape border rotate=270,
-fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};
+\node (renderarrow) [below=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=270,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};
 \node [below=0.1 of renderarrow] {rendering};
-%\node [above=of component] {React vs. Reflux};
-%\node [below left=of component] {only interaction logic};
-%\node [below right=of component] {treat state as read-only};
-%lifecycle
+\visible<-1>{\node (lifearrow) [above=0.1 of component,double arrow,shape border uses incircle,shape border rotate=90,
+fill=red,minimum height=2cm] {};}
+\visible<-1>{\node [above=0.1 of lifearrow] {lifecycle};}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}\frametitle{Why Reflux?}
+\centering
+\begin{tikzpicture}
+\node[anchor=north west] (text1) at (0,6.1) {declarative view abstraction};
+\fill[draw=metroblue,fill=metroblue!50,rounded corners=10] (6,0) rectangle (10,3);
+\node[anchor=north west] at (6.1,2.9) {Component};
+\fill[draw=metroyellow,fill=metroyellow!50,rounded corners=10] (6.9,0.1) rectangle (9.9,2.1);
+\node[anchor=north west] at (7,2) {\small Component};
+\fill[draw=metroblue,fill=metroblue!50,rounded corners=10] (6,3.1) rectangle (10,6.1);
+\node[anchor=north west] at (6.1,6) {Component};
+\fill[draw=red,fill=red!50,rounded corners=10] (3.5,3.1) rectangle (5.5,5.1);
+\node[anchor=north west] at (3.6,5) {Store};
+\node (text2) [below=of text1.west, anchor=west] {\textcolor{red}{decoupling}};
+\node (text3) [below=of text2.west, anchor=west] {\textcolor{red}{easy testing}};
+\node (text4) [below=of text3.west, anchor=west] {fast rendering};
+\node (text5) [below=of text4.west, anchor=west] {\textcolor{red}{transversal state handling}};
+\draw (5.5,4.1) edge[<->,red,thick] (6,4.1);
+\draw (5.4,3.2) edge[<->,red,thick] (6.1,2.9);
 \end{tikzpicture}
 \end{frame}
 
@@ -116,13 +165,39 @@ Notes on Reflux components:
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}\frametitle{Reflux Components}
+\centering
+\tikzfading[name=fade left,
+right color=transparent!0,
+left color=transparent!100]
+\begin{tikzpicture}
+\node (component) {Component};
+\node (proparrow) [above left=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=315,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};
+\node [above left=0.1 of proparrow] {\phantom{t}props};
+\node (statearrow) [above right=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=225,fill=red,minimum height=2cm,path fading=fade left,fading transform={rotate=225}] {};
+\node [above right=0.1 of statearrow] {state\phantom{p}};
+\node (renderarrow) [below=0.1 of component,single arrow,shape border uses incircle,
+shape border rotate=270,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};
+\node [below=0.1 of renderarrow] {rendering};
+\node [above=2.5 of component] {extend React components};
+\node [below left=0.5 of component] {\begin{minipage}{3cm}\begin{center}only\\interaction\\logic\end{center}\end{minipage}};
+\node [below right=0.5 of component] {\begin{minipage}{3cm}\begin{center}treat state as\\read-only\end{center}\end{minipage}};
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}\frametitle{Actions}
 \centering
 \begin{tikzpicture}
 \node (action) {Action};
-\node [below=of action] {function};
-\node [below left=of action] {called by component};
-\node [below right=of action] {transports payload};
+\visible<2->{\node [above=of action] {just a function};}
+\visible<3->{\node (callarrow) [below left=0.1 of action,single arrow,shape border uses incircle,
+shape border rotate=45,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=45}] {};}
+\visible<3->{\node [below left=0.1 of callarrow] {\begin{minipage}{3cm}\begin{center}called by component\end{center}\end{minipage}};}
+\visible<4->{\node (transarrow) [below right=0.1 of action,single arrow,shape border uses incircle,
+shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
+\visible<4->{\node [below right=0.1 of transarrow] {\begin{minipage}{3cm}\begin{center}transports payload\end{center}\end{minipage}};}
 \end{tikzpicture}
 \end{frame}
 
@@ -135,6 +210,11 @@ Notes on Reflux components:
 \node [below right=of store] {sets state of components};
 \node [right=of store] {only data logic};
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
+\centering
+Code!
 \end{frame}
 
 \begin{frame}\frametitle{Introduction}
