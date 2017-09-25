@@ -192,10 +192,14 @@ shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fa
 \centering
 \begin{tikzpicture}
 \node (store) {Store};
-\node [below=of store] {state handler};
-\node [below left=of store] {listens to actions};
-\node [below right=of store] {sets state of components};
-\node [right=of store] {only data logic};
+\visible<2->{\node [above=of store] {state handler};}
+\visible<3->{\node (listenarrow) [below left=0.1 of store,single arrow,shape border uses incircle,
+shape border rotate=45,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=45}] {};}
+\visible<3->{\node [below left=0.1 of listenarrow] {\begin{minipage}{3cm}\begin{center}listens to actions\end{center}\end{minipage}};}
+\visible<4->{\node (setarrow) [below right=0.1 of store,single arrow,shape border uses incircle,
+shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
+\visible<4->{\node [below right=0.1 of setarrow] {\begin{minipage}{3cm}\begin{center}sets state of components\end{center}\end{minipage}};}
+\visible<5->{\node [below=2.5 of store] {only data logic};}
 \end{tikzpicture}
 \end{frame}
 
