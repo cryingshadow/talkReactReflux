@@ -6,6 +6,7 @@
 *.snm
 *.toc
 *.gz
+*.vrb
 *~
 build/
 .idea/
