@@ -4,10 +4,10 @@
   "description": "A stripped down webshop example to showcase react and reflux.",
   "main": "webpack.config.js",
   "devDependencies": {
-    "babel": "~6.5.2",
-    "babel-cli": "~6.10.1",
-    "babel-core": "~6.9.1",
-    "babel-loader": "~6.2.4",
+    "babel": "~6.23.0",
+    "babel-cli": "~6.26.0",
+    "babel-core": "~6.26.0",
+    "babel-loader": "~6.4.1",
     "babel-preset-es2015": "~6.22.0",
     "babel-preset-react": "^6.22.0",
     "html-webpack-plugin": "^2.21.0",
@@ -24,10 +24,34 @@
     "reactstrap": "^4.8.0",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
-    "bootstrap": "^4.0.0-alpha.4"
+    "bootstrap": "^4.0.0-alpha.4",
+    "jest": "^21.1.0",
+    "babel-jest": "^21.0.2",
+    "react-test-renderer": "^15.6.1",
+    "enzyme": "^2.9.1",
+    "jest-enzyme": "^3.8.3"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "jsx"],
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "unmockedModulePathPatterns": [
+      "react",
+      "enzyme",
+      "jest-enzyme"
+    ],
+    "moduleDirectories": [
+      "src",
+      "node_modules",
+      "build"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "^.+\\.(css|scss|less)$": "<rootDir>/src/__mocks__/styleMock.js"
+    }
   },
   "scripts": {
     "build": "webpack",
+    "test": "jest",
     "start": "npm i && webpack && node ./node_modules/http-server/bin/http-server ./build -p 8080 -o"
   },
   "repository": {

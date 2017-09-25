@@ -16,12 +16,21 @@ class ExampleWebshop extends Reflux.Component {
         Actions.loadArticles();
     }
 
+    renderHeader() {
+        return (
+            <div className="row webshop-header">
+                <img className="logo" src="https://www.metroag.de/~/assets/metro/images/logo/metro-logo-full-white.svg" />
+                <div className="basket" onClick={() => console.log("Clicky basket!")}>
+                    <img className="basket-logo" src="https://www.metroag.de/~/assets/metro/images/logo/metro-logo-full-white.svg" />
+                </div>
+            </div>
+        );
+    }
+
     render() {
         return (
             <div>
-                <div className="row webshop-header">
-                    <img className="logo" src="https://www.metroag.de/~/assets/metro/images/logo/metro-logo-full-white.svg" />
-                </div>
+                {this.renderHeader()}
                 <div className="row mt-3">
                     {this.state.articles.map(article =>
                         <Article key={"article" + article.id} article={article} />
