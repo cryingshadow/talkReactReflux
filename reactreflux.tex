@@ -81,9 +81,28 @@ fill=red,minimum height=2cm] {};}
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}\frametitle{React Components \textendash{} Example}
-\centering
-Code!
+\begin{frame}[fragile]\frametitle{React Components \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+class Article extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    render() {
+        const article = this.props.article;
+        return (
+            <div key={article.id} className="col">
+                <div className="article">
+                    <img src={article.image}/>
+                    <span>{article.name}</span>
+                    <span>{article.price}</span>
+                </div>
+            </div>
+        );
+    }
+}
+export default Article;
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}\frametitle{Components}
@@ -160,30 +179,6 @@ shape border rotate=270,fill=mygreen,minimum height=2cm,path fading=fade left,fa
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{React component example}
-\begin{lstlisting}[style=htmlcssjs]
-class Article extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    render() {
-        const article = this.props.article;
-        return (
-            <div key={article.id} className="col">
-                <div className="article">
-                    <img src={article.image}/>
-                    <span>{article.name}</span>
-                    <span>{article.price}</span>
-                </div>
-            </div>
-        );
-    }
-}
-export default Article;
-\end{lstlisting}
-\end{frame}
-
 \begin{frame}\frametitle{Actions}
 \centering
 \begin{tikzpicture}
@@ -196,19 +191,6 @@ shape border rotate=45,fill=metroblue,minimum height=2cm,path fading=fade left,f
 shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
 \visible<4->{\node [below right=0.1 of transarrow] {\begin{minipage}{3cm}\begin{center}transports payload\end{center}\end{minipage}};}
 \end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{Actions example}
-\begin{lstlisting}[style=htmlcssjs]
-const Actions = Reflux.createActions({
-    "loadArticles": {},
-    "addToBasket": {},
-    "removeFromBasket": {},
-    "clearBasket": {}
-});
-
-export default Actions;
-\end{lstlisting}
 \end{frame}
 
 \begin{frame}\frametitle{Stores}
@@ -226,8 +208,38 @@ shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fa
 \end{tikzpicture}
 \end{frame}
 
-%\begin{frame}\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
-\begin{frame}[fragile]\frametitle{Stores example}
+\begin{frame}\frametitle{Data Flow}
+\centering
+\begin{tikzpicture}
+[node/.style={rectangle,draw=black,thick,inner sep=5pt},
+edge/.style={->,thick},
+connect/.style={->,thick,dashed}]
+\node[node] (action) {Action};
+\node[node] (component) [below left=2 of action] {Component};
+\node[node] (store) [below right=2 of action] {Store};
+\visible<2->{\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);}
+\visible<3->{\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);}
+\visible<4->{\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);}
+\visible<5->{\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);}
+\visible<6->{\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+const Actions = Reflux.createActions({
+    "loadArticles": {},
+    "addToBasket": {},
+    "removeFromBasket": {},
+    "clearBasket": {}
+});
+
+export default Actions;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
+%\begin{frame}[fragile]\frametitle{Stores example}
 \begin{lstlisting}[style=htmlcssjs]
 class ArticleStore extends Reflux.Store {
     constructor() {
@@ -249,24 +261,7 @@ class ArticleStore extends Reflux.Store {
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}\frametitle{Data Flow}
-\centering
-\begin{tikzpicture}
-[node/.style={rectangle,draw=black,thick,inner sep=5pt},
-edge/.style={->,thick},
-connect/.style={->,thick,dashed}]
-\node[node] (action) {Action};
-\node[node] (component) [below left=2 of action] {Component};
-\node[node] (store) [below right=2 of action] {Store};
-\visible<2->{\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);}
-\visible<3->{\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);}
-\visible<4->{\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);}
-\visible<5->{\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);}
-\visible<6->{\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);}
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{React + Reflux component}
+\begin{frame}[fragile]\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 class ExampleWebshop extends Reflux.Component {
     constructor(props) {
@@ -279,13 +274,11 @@ class ExampleWebshop extends Reflux.Component {
     render() {
         return (
             <div>
-                {this.renderHeader()}
                 <div className="row">
                     {this.state.articles.map(article =>
                         <Article article={article} />)}
                 </div>
-            </div>
-        );
+            </div>);
     }
 }
 \end{lstlisting}
