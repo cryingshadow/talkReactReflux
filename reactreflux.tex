@@ -256,11 +256,11 @@ connect/.style={->,thick,dashed}]
 \node[node] (action) {Action};
 \node[node] (component) [below left=2 of action] {Component};
 \node[node] (store) [below right=2 of action] {Store};
-\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);
-\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);
-\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);
-\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);
-\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);
+\visible<2->{\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);}
+\visible<3->{\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);}
+\visible<4->{\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);}
+\visible<5->{\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);}
+\visible<6->{\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);}
 \end{tikzpicture}
 \end{frame}
 
