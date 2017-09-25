@@ -152,19 +152,6 @@ Notes on Reflux components:
 * Set multiple stores by setting this.stores (the plural) and setting it to an Array of store classes.
 * Set a this.storeKeys Array to restrict only certain parts of the store being mixed into the component state.
 \end{comment}
-\begin{frame}\frametitle{Components}
-\centering
-\begin{tikzpicture}
-\node (component) {Component};
-\node [above right=of component] {props};
-\node [above left=of component] {state};
-\node [below=of component] {rendering};
-\node [above=of component] {React vs. Reflux};
-\node [below left=of component] {only interaction logic};
-\node [below right=of component] {treat state as read-only};
-\end{tikzpicture}
-\end{frame}
-
 \begin{frame}\frametitle{Reflux Components}
 \centering
 \tikzfading[name=fade left,
