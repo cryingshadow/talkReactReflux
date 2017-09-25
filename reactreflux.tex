@@ -8,7 +8,7 @@
 \setsansfont{Verdana}
 \usepackage{tikz}
 \usepackage{comment}
-\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,automata,calc}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,automata,calc,shapes.arrows,fadings}
 
 \include{commands}
 
@@ -58,6 +58,29 @@ In this talk, we will have a look at general patterns how to use React component
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}\frametitle{Components}
+\centering
+\tikzfading[name=fade left,
+right color=transparent!0,
+left color=transparent!100]
+\begin{tikzpicture}
+\node (component) {Component};
+\node (proparrow) [above left=0.1 of component,single arrow,shape border uses incircle,shape border rotate=315,
+fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};
+\node [above left=0.1 of proparrow] {\phantom{t}props};
+\node (statearrow) [above right=0.1 of component,single arrow,shape border uses incircle,shape border rotate=225,
+fill=red,minimum height=2cm,path fading=fade left,fading transform={rotate=225}] {};
+\node [above right=0.1 of statearrow] {state\phantom{p}};
+\node (renderarrow) [below=0.1 of component,single arrow,shape border uses incircle,shape border rotate=270,
+fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};
+\node [below=0.1 of renderarrow] {rendering};
+%\node [above=of component] {React vs. Reflux};
+%\node [below left=of component] {only interaction logic};
+%\node [below right=of component] {treat state as read-only};
+%lifecycle
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}\frametitle{Data Flow}
 \centering
 \begin{tikzpicture}
@@ -72,19 +95,6 @@ connect/.style={->,thick,dashed}]
 \draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);
 \draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);
 \draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}\frametitle{Components}
-\centering
-\begin{tikzpicture}
-\node (component) {Component};
-\node [above right=of component] {props};
-\node [above left=of component] {state};
-\node [below=of component] {rendering};
-\node [above=of component] {React vs. Reflux};
-\node [below left=of component] {only interaction logic};
-\node [below right=of component] {treat state as read-only};
 \end{tikzpicture}
 \end{frame}
 
