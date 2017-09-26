@@ -84,10 +84,7 @@ fill=red,minimum height=2cm] {};}
 \begin{frame}[fragile]\frametitle{React Components \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 class Article extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+
     render() {
         const article = this.props.article;
         return (
@@ -101,7 +98,6 @@ class Article extends React.Component {
         );
     }
 }
-export default Article;
 \end{lstlisting}
 \end{frame}
 
@@ -227,14 +223,12 @@ connect/.style={->,thick,dashed}]
 
 \begin{frame}[fragile]\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
-const Actions = Reflux.createActions({
-    "loadArticles": {},
-    "addToBasket": {},
-    "removeFromBasket": {},
-    "clearBasket": {}
-});
-
-export default Actions;
+const Actions = Reflux.createActions([
+    "loadArticles",
+    "addToBasket",
+    "removeFromBasket",
+    "clearBasket"
+]);
 \end{lstlisting}
 \end{frame}
 
@@ -261,6 +255,17 @@ class ArticleStore extends Reflux.Store {
 \end{lstlisting}
 \end{frame}
 
+\begin{comment}
+Instead of loading the first bunch of articles in componentDidMount or componentWillMount one could do the following in the store:
+Reflux.createStore({
+    init: function() {
+        this.state = "Init state";
+    }
+    getInitialState: function() {
+        this.loadArticles();
+    }
+}
+\end{comment}
 \begin{frame}[fragile]\frametitle{Reflux Components, Actions, and Stores \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 class ExampleWebshop extends Reflux.Component {
