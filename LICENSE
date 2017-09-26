@@ -3,8 +3,9 @@ BSD 3-Clause License
 Copyright (c) 2017, Philip Baues and Thomas Ströder
 All rights reserved.
 
-This license applies to all non-picture material in this repository. For the pictures, we only permit viewing and 
-downloading them, but no (re-)distribution, modification, or other usage of the pictures is allowed.
+This license applies to all non-picture material in this repository (i.e., for all contents not being in the pics 
+folder). For the pictures, the licenses in the pics folder apply (i.e., for each file X.png or X.jpg, the file 
+X.license is the corresponding license).
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

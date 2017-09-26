@@ -23,12 +23,7 @@
 \date{28./29.\ September 2017}
 \newcommand{\location}{\texttt{code.talks} Hamburg}
 
-{\setbeamercolor{background canvas}{bg=metroblue}
-\begin{frame}[plain]
-\centering
-\includegraphics{metro2.png}
-\end{frame}
-}
+\metroslide
 
 {\setbeamercolor{background canvas}{bg=metroblue}
 \begin{frame}[plain]
@@ -289,22 +284,19 @@ class ExampleWebshop extends Reflux.Component {
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}\frametitle{Introduction}
+\begin{frame}\frametitle{React and Reflux @METRO}
 \centering
-\begin{itemize}
-\item Historically grown company and IT-systems
-\item Digital readiness initiative to renew whole IT landscape
-\item \textit{Betty} as first customer journey and system
-\item A lot of different other applications in development\\
-(Driver App, sales and more, customer master data, …)
-\end{itemize}
+\includegraphics[width=.85\linewidth,height=.85\textheight,keepaspectratio]{pics/Betty.png}
 \end{frame}
 
-\begin{frame}\frametitle{What is Betty}
+\begin{frame}\frametitle{Tech Stack @METRO}
 \centering
-\begin{center}
-\includegraphics[width=.85\linewidth,height=.85\textheight,keepaspectratio]{Betty.png}
-\end{center}
+\begin{tikzpicture}
+\node at (0,10) {React};
+\node at (10,10) {Reflux};
+\node at (0,0) {Docker};
+\node at (10,0) {Kubernetes};
+\end{tikzpicture}
 \end{frame}
 
 \end{document}

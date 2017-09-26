@@ -15,13 +15,13 @@
 \setbeamertemplate{footline}{
   \begin{tikzpicture}[remember picture,overlay]
   \draw[metroblue] ($(current page.south west)+(0.6,0.6)$) -- ($(current page.south east)+(-3.5,0.6)$);
-  \node (logosmall) at ($(current page.south east)+(-0.2,-0.1)$) [anchor=south east] {\includegraphics[height=8mm]{metro.png}};
+  \node (logosmall) at ($(current page.south east)+(-0.2,-0.1)$) [anchor=south east] {\includegraphics[height=8mm]{pics/metro.png}};
   \node[metroblue] (textline) at ($(current page.south west)+(0.8,0.13)$) [anchor=south west] {\footertext{}};
   \end{tikzpicture}
 }
 \defbeamertemplate*{title page}{metro}[1][]{
   \begin{tikzpicture}[remember picture,overlay]
-  \node (logo) at (current page.north west) [anchor=north west] {\includegraphics[height=\paperheight]{left.png}};
+  \node (logo) at (current page.north west) [anchor=north west] {\includegraphics[height=\paperheight]{pics/left.png}};
   \node[white] (title) at ($(logo)+(-0.7,0.65)$) [anchor=south west] {\fontsize{20}{20}\selectfont\textbf{\inserttitle}\par};
   \node[white] (subtitle) [below=0.7 of title.west,anchor=west] {\fontsize{12}{12}\selectfont\textbf{\insertsubtitle}\par};
   \node[white] (date) [below=0.9 of subtitle.west,anchor=west] {\datesize\insertdate,};
