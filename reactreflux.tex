@@ -146,6 +146,23 @@ fill=red,minimum height=2cm] {};}
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}\frametitle{Data Flow}
+\centering
+\begin{tikzpicture}
+[node/.style={rectangle,draw=black,thick,inner sep=5pt},
+edge/.style={->,thick},
+connect/.style={->,thick,dashed}]
+\node[node] (action) {Action};
+\node[node] (component) [below left=2 of action] {Component};
+\node[node] (store) [below right=2 of action] {Store};
+\visible<2->{\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);}
+\visible<3->{\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);}
+\visible<4->{\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);}
+\visible<5->{\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);}
+\visible<6->{\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);}
+\end{tikzpicture}
+\end{frame}
+
 \begin{comment}
 Notes on Reflux components:
 * Set multiple stores by setting this.stores (the plural) and setting it to an Array of store classes.
@@ -201,23 +218,6 @@ shape border rotate=45,fill=metroblue,minimum height=2cm,path fading=fade left,f
 shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
 \visible<4->{\node [below right=0.1 of setarrow] {\begin{minipage}{3cm}\begin{center}sets state of components\end{center}\end{minipage}};}
 \visible<5->{\node [below=2.5 of store] {only ``data logic''};}
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}\frametitle{Data Flow}
-\centering
-\begin{tikzpicture}
-[node/.style={rectangle,draw=black,thick,inner sep=5pt},
-edge/.style={->,thick},
-connect/.style={->,thick,dashed}]
-\node[node] (action) {Action};
-\node[node] (component) [below left=2 of action] {Component};
-\node[node] (store) [below right=2 of action] {Store};
-\visible<2->{\draw (component) edge[edge,in=180,out=90] node[auto] {calls} (action);}
-\visible<3->{\draw (action) edge[edge,in=90,out=0] node[auto] {executes} (store);}
-\visible<4->{\draw (store) edge[edge,in=270,out=270] node[auto] {sets state} (component);}
-\visible<5->{\draw (component) edge[connect,bend right=30] node[auto,swap] {sets store(s)} (store);}
-\visible<6->{\draw (store) edge[connect,in=270,out=180] node[auto] {listens to} (action);}
 \end{tikzpicture}
 \end{frame}
 
