@@ -8,7 +8,6 @@ class Article extends Reflux.Component {
 
     constructor(props) {
         super(props);
-        this.store = BasketStore;
     }
 
     render() {
@@ -18,8 +17,8 @@ class Article extends Reflux.Component {
                 <div className="article" >
                     <img src={article.image} alt={article.name} />
                     <div className="image_overlay"></div>
-                    <div className="view_details" onClick={() => {this.state.basket.indexOf(article.id) < 0? Actions.addToBasket(article.id): Actions.removeFromBasket(article.id)}}>
-                        {this.state.basket.indexOf(article.id) < 0? "Add to basket": "Remove from basket"}
+                    <div className="view_details" onClick={() => {BasketStore.getBasket().indexOf(article.id) < 0? Actions.addToBasket(article): Actions.removeFromBasket(article)}}>
+                        {BasketStore.getBasket().indexOf(article.id) < 0? "Add to basket": "Remove from basket"}
                     </div>
                     <div className="stats">
                         <div className="stats-container">
