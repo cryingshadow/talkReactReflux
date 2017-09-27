@@ -217,7 +217,8 @@ shape border rotate=45,fill=metroblue,minimum height=2cm,path fading=fade left,f
 \visible<4->{\node (setarrow) [below right=0.1 of store,single arrow,shape border uses incircle,
 shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
 \visible<4->{\node [below right=0.1 of setarrow] {\begin{minipage}{3cm}\begin{center}sets state of components\end{center}\end{minipage}};}
-\visible<5->{\node [below=2.5 of store] {only ``data logic''};}
+\visible<5->{\node [left=of store] {\begin{minipage}{3cm}\begin{center}stores\\actual state\end{center}\end{minipage}};}
+\visible<6->{\node [right=of store] {\begin{minipage}{3cm}\begin{center}only\\``data logic''\end{center}\end{minipage}};}
 \end{tikzpicture}
 \end{frame}
 
@@ -343,21 +344,7 @@ class Article extends Reflux.Component {
 
 \begin{frame}[fragile]\frametitle{Unnecessary state in components \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
-class Article extends Reflux.Component {
-    constructor(props) {
-        super(props);
-        this.store = BasketStore;
-    }
-    render() {
-        return (
-            <div className="article" onClick={() => {
-                this.state.basket.indexOf(this.props.article) < 0
-                ? "Add to basket"
-                : "Remove from basket"}
-            </div>
-        );
-    }
-}
+
 \end{lstlisting}
 \end{frame}
 
@@ -429,10 +416,23 @@ export default ExampleWebshopHeader;
 \begin{frame}\frametitle{Tech Stack @METRO}
 \centering
 \begin{tikzpicture}
-\node at (0,7) {React};
-\node at (10,7) {Reflux};
-\node at (0,0) {Docker};
-\node at (10,0) {Kubernetes};
+\visible<7->{\node at (8.5,6) {\includegraphics[height=1cm]{pics/react.png}};}
+\visible<6->{\node at (0,4) {\includegraphics[height=1.5cm]{pics/cassandra.png}};}
+\visible<2->{\node at (0,2) {\Large Docker};}
+\visible<5->{\node at (3.5,0) {\includegraphics[height=2cm]{pics/kubernetes.png}};}
+\visible<8->{\node at (7,4.5) {\Large Java 8};}
+\visible<12->{\node at (8,3) {\includegraphics[height=1.5cm]{pics/haskell.jpg}};}
+\visible<10->{\node at (9,4.5) {\includegraphics[height=2cm]{pics/go.png}};}
+\visible<11->{\node at (8,2) {\Large Clojure};}
+\visible<13->{\node at (7.5,0) {\includegraphics[height=1cm]{pics/latex.png}};}
+\visible<9->{\node at (8.5,1) {\includegraphics[height=1cm]{pics/scala.png}};}
+\visible<2->{\node at (2.2,1.7) {\includegraphics[height=1.3cm]{pics/container.png}};}
+\visible<2->{\node at (3.5,1.7) {\includegraphics[height=1.3cm]{pics/container.png}};}
+\visible<2->{\node at (4.8,1.7) {\includegraphics[height=1.3cm]{pics/container.png}};}
+\visible<3->{\node at (3.5,3) {\Large \textbf{REST API}};}
+\visible<4->{\node at (3.5,6) {\url{http://domain/service/endpoint}};}
+\visible<4->{\node at (3.5,4.5) [single arrow,shape border uses incircle,
+shape border rotate=270,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};}
 \end{tikzpicture}
 \end{frame}
 
