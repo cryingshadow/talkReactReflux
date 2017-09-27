@@ -1,10 +1,11 @@
 import React from 'react';
 import Reflux from 'reflux';
-import ArticleStore from '../stores/ArticleStore';
-import BasketStore from '../stores/BasketStore';
+import './ExampleWebshop.scss';
 import Actions from '../Actions';
 import Article from './Article';
-import './ExampleWebshop.scss';
+import ArticleStore from '../stores/ArticleStore';
+import BasketStore from '../stores/BasketStore';
+import _ from 'lodash';
 
 class ExampleWebshop extends Reflux.Component {
 
@@ -34,7 +35,10 @@ class ExampleWebshop extends Reflux.Component {
                 {this.renderHeader()}
                 <div className="row mt-3">
                     {this.state.articles.map(article =>
-                        <Article key={"article" + article.id} article={article} />
+                        <Article key={"article" + article.id}
+                                 article={article}
+                                 articleIsNotInBasket={!_.some(this.state.basket, { "id": article.id })}
+                        />
                     )}
                 </div>
             </div>
