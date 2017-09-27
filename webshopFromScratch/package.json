@@ -29,7 +29,8 @@
     "babel-jest": "^21.0.2",
     "react-test-renderer": "^15.6.1",
     "enzyme": "^2.9.1",
-    "jest-enzyme": "^3.8.3"
+    "jest-enzyme": "^3.8.3",
+    "lodash": "^4.17.4"
   },
   "jest": {
     "moduleFileExtensions": ["js", "jsx"],

@@ -1,6 +1,7 @@
 import React from 'react';
 import Reflux from 'reflux';
 import ArticleStore from '../stores/ArticleStore';
+import BasketStore from '../stores/BasketStore';
 import Actions from '../Actions';
 import Article from './Article';
 import './ExampleWebshop.scss';
@@ -9,7 +10,7 @@ class ExampleWebshop extends Reflux.Component {
 
     constructor(props) {
         super(props);
-        this.store = ArticleStore;
+        this.stores = [ArticleStore, BasketStore];
     }
 
     componentDidMount() {
@@ -20,8 +21,8 @@ class ExampleWebshop extends Reflux.Component {
         return (
             <div className="row webshop-header">
                 <img className="logo" src="https://www.metroag.de/~/assets/metro/images/logo/metro-logo-full-white.svg" />
-                <div className="basket" onClick={() => console.log("Clicky basket!")}>
-                    <img className="basket-logo" src="https://www.metroag.de/~/assets/metro/images/logo/metro-logo-full-white.svg" />
+                <div className="basket" onClick={() => Actions.clearBasket()}>
+                    <span>{this.state.sumPrice + "€"}</span>
                 </div>
             </div>
         );

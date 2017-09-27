@@ -1,12 +1,14 @@
 import Reflux from 'reflux';
 import Actions from '../Actions';
+import _ from 'lodash';
 
 class BasketStore extends Reflux.Store {
 
     constructor() {
         super();
         this.state = {
-            basket: []
+            basket: [],
+            sumPrice: 0
         };
 
         this.listenTo(Actions.addToBasket, this.addToBasket);
@@ -14,25 +16,28 @@ class BasketStore extends Reflux.Store {
         this.listenTo(Actions.clearBasket, this.clearBasket);
     }
 
-    addToBasket(articleId) {
-        if (this.state.basket.indexOf(articleId) < 0) {
+    addToBasket(article) {
+        if (!this.state.basket.some(element => element.id === article.id)) {
             this.setState({
-                basket: this.state.basket.concat([articleId])
+                basket: this.state.basket.concat([article]),
+                sumPrice: _.round(this.state.sumPrice + article.price, 2)
             });
         }
     }
 
-    removeFromBasket(articleId) {
-        if (this.state.basket.indexOf(articleId) >= 0) {
+    removeFromBasket(article) {
+        if (this.state.basket.some(element => element.id === article.id)) {
             this.setState({
-                basket: this.state.basket.filter(element => element !== articleId)
+                basket: this.state.basket.filter(element => element.id !== article.id),
+                sumPrice: _.round(this.state.sumPrice - article.price, 2)
             });
         }
     }
 
     clearBasket() {
         this.setState({
-            basket: []
+            basket: [],
+            sumPrice: 0
         });
     }
 }
