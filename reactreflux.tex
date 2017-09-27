@@ -38,6 +38,11 @@ React is currently one of the most popular ingredients of modern web application
 In this talk, we will have a look at general patterns how to use React components together with Reflux stores and actions to build a responsive web application. Here, the focus is on state: When and where to (not) have it and how to deal with it using the facilities React and Reflux are offering. We illustrate these concepts with a small web shop example. In addition to that, we also address common mistakes and how to avoid them.
 \end{comment}
 
+\begin{frame}\frametitle{Drilled down webshop example}
+\centering
+\includegraphics[width=\linewidth,height=.85\textheight,keepaspectratio]{pics/ExampleWebshop.png}
+\end{frame}
+
 \begin{frame}\frametitle{Why React?}
 \centering
 \begin{tikzpicture}
@@ -282,6 +287,73 @@ class ExampleWebshop extends Reflux.Component {
             </div>);
     }
 }
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}\frametitle{Problematic state handling}
+\begin{itemize}
+\item Getter in stores
+\item Unnecessary state in components
+\item State vs. props
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Getter in stores \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Unnecessary state in components \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{State vs. props \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}\frametitle{How to handle state}
+\vspace*{\fill}
+\begin{center}
+\begin{minipage}{.6\textwidth}
+DON'T!
+\end{minipage}
+\end{center}
+\vfill % equivalent to \vspace{\fill}
+\end{frame}
+
+\begin{frame}\frametitle{How to handle state (if you have to)}
+\begin{itemize}
+\item Spread the state access to as few components as possible
+\item Do not access or alter state in a store directly
+\item Extract state on the highest level possible and hand it in to other components via props
+\item Stateless components
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Stateless component \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+const ExampleWebshopHeader = ({sumPrice}) => {
+    return (
+        <div className="row webshop-header">
+            <img className="logo" src="https://www.internet.com" />
+            <div className="basket" 
+                    onClick={() => Actions.clearBasket()}>
+                <span>{sumPrice + "€"}</span>
+            </div>
+        </div>
+    );
+};
+
+ExampleWebshopHeader.propTypes = {
+    sumPrice: PropTypes.number.isRequired
+};
+
+export default ExampleWebshopHeader;
 \end{lstlisting}
 \end{frame}
 
