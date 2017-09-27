@@ -212,7 +212,8 @@ shape border rotate=45,fill=metroblue,minimum height=2cm,path fading=fade left,f
 \visible<4->{\node (setarrow) [below right=0.1 of store,single arrow,shape border uses incircle,
 shape border rotate=315,fill=mygreen,minimum height=2cm,path fading=fade left,fading transform={rotate=315}] {};}
 \visible<4->{\node [below right=0.1 of setarrow] {\begin{minipage}{3cm}\begin{center}sets state of components\end{center}\end{minipage}};}
-\visible<5->{\node [below=2.5 of store] {only ``data logic''};}
+\visible<5->{\node [left=of store] {\begin{minipage}{3cm}\begin{center}stores\\actual state\end{center}\end{minipage}};}
+\visible<6->{\node [right=of store] {\begin{minipage}{3cm}\begin{center}only\\``data logic''\end{center}\end{minipage}};}
 \end{tikzpicture}
 \end{frame}
 
