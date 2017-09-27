@@ -1,0 +1,24 @@
+$dark-blue: #003b7e;
+$yellow: #f9ae00;
+
+.webshop-header {
+  background: $dark-blue;
+  color: $dark-blue;
+
+  .logo {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .basket {
+    color: #ffffff;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+    padding: 30px 0;
+    margin-right: 40px;
+    width: 120px;
+  }
+}

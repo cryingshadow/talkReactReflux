@@ -2,10 +2,10 @@ import React from 'react';
 import Reflux from 'reflux';
 import Actions from '../Actions';
 import Article from './Article';
+import ExampleWebshopHeader from './ExampleWebshopHeader';
 import ArticleStore from '../stores/ArticleStore';
 import BasketStore from '../stores/BasketStore';
 import _ from 'lodash';
-import './ExampleWebshop.scss';
 
 class ExampleWebshop extends Reflux.Component {
 
@@ -18,26 +18,15 @@ class ExampleWebshop extends Reflux.Component {
         Actions.loadArticles();
     }
 
-    renderHeader() {
-        return (
-            <div className="row webshop-header">
-                <img className="logo" src="https://www.metroag.de/~/assets/metro/images/logo/metro-logo-full-white.svg" />
-                <div className="basket" onClick={() => Actions.clearBasket()}>
-                    <span>{this.state.sumPrice + "€"}</span>
-                </div>
-            </div>
-        );
-    }
-
     render() {
         return (
             <div>
-                {this.renderHeader()}
+                <ExampleWebshopHeader sumPrice={this.state.sumPrice}/>
                 <div className="row mt-3">
                     {this.state.articles.map(article =>
                         <Article key={"article" + article.id}
-                                 article={article}
-                                 articleIsNotInBasket={!_.some(this.state.basket, { "id": article.id })}
+                             article={article}
+                             articleIsNotInBasket={!_.some(this.state.basket, { "id": article.id })}
                         />
                     )}
                 </div>

@@ -27,7 +27,7 @@ const Article = ({article, articleIsNotInBasket}) => {
             </div>
         </div>
     );
-}
+};
 
 Article.propTypes = {
     article: PropTypes.object.isRequired,
