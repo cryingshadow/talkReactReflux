@@ -1,11 +1,11 @@
 import React from 'react';
 import Reflux from 'reflux';
-import './ExampleWebshop.scss';
 import Actions from '../Actions';
 import Article from './Article';
 import ArticleStore from '../stores/ArticleStore';
 import BasketStore from '../stores/BasketStore';
 import _ from 'lodash';
+import './ExampleWebshop.scss';
 
 class ExampleWebshop extends Reflux.Component {
 
