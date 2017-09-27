@@ -310,7 +310,7 @@ const BasketStore =  Reflux.createStore({
     },
 
     addToBasket(article) {
-        if (this.findBasketPosition(article) < 0) {
+        if (!this.isArticleInBasket(article)) {
             this.basket = this.basket.concat([article])
         }
         this.trigger(this.basket());
@@ -363,7 +363,20 @@ class Article extends Reflux.Component {
 
 \begin{frame}[fragile]\frametitle{State vs. props \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
-
+class Article extends Reflux.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div className="article" onClick={() => {
+                this.props.articleIsAlreadyInBasket
+                ? "Add to basket"
+                : "Remove from basket"}
+            </div>
+        );
+    }
+}
 \end{lstlisting}
 \end{frame}
 
@@ -377,11 +390,11 @@ DON'T!
 \vfill % equivalent to \vspace{\fill}
 \end{frame}
 
-\begin{frame}\frametitle{How to handle state (if you have to)}
+\begin{frame}\frametitle{How to handle state\newline(if you have to)}
 \begin{itemize}
-\item Spread the state access to as few components as possible
+\item Access state from as few components as possible
 \item Do not access or alter state in a store directly
-\item Extract state on the highest level possible and hand it in to other components via props
+\item Extract state on the highest level possible and hand it to child components via props
 \item Stateless components
 \end{itemize}
 \end{frame}
