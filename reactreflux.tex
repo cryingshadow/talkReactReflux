@@ -344,7 +344,21 @@ class Article extends Reflux.Component {
 
 \begin{frame}[fragile]\frametitle{Unnecessary state in components \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
-
+class Article extends Reflux.Component {
+    constructor(props) {
+        super(props);
+        this.store = BasketStore;
+    }
+    render() {
+        return (
+            <div className="article" onClick={() => {
+                this.state.basket.indexOf(this.props.article) < 0
+                ? "Add to basket"
+                : "Remove from basket"}
+            </div>
+        );
+    }
+}
 \end{lstlisting}
 \end{frame}
 
