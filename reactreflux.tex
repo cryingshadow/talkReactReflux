@@ -300,7 +300,45 @@ class ExampleWebshop extends Reflux.Component {
 
 \begin{frame}[fragile]\frametitle{Getter in stores \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
+const BasketStore =  Reflux.createStore({
+    constructor() {
+        this.basket = [];
+        this.listenTo(Actions.addToBasket, this.addToBasket);
+    },
 
+    getBasket() {
+        return this.basket;
+    },
+
+    addToBasket(article) {
+        if (this.findBasketPosition(article) < 0) {
+            this.basket = this.basket.concat([article])
+        }
+        this.trigger(this.basket());
+    }
+};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Getter in stores \textendash{} Example}
+\begin{lstlisting}[style=htmlcssjs]
+class Article extends Reflux.Component {
+    render() {
+        const article = this.props.article;
+        return (
+            <div className="article" >
+                <img src={article.image}/>
+                <span>{article.name}<span/>
+                <span>{article.name}<span/>
+                <div onClick={() => {
+                    BasketStore.getBasket().indexOf(article.id) < 0
+                    ? "Add to basket"
+                    : "Remove from basket"}
+                </div>
+            </div>
+        );
+    }
+}
 \end{lstlisting}
 \end{frame}
 
