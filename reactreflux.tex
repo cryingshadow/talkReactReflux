@@ -40,10 +40,7 @@ React is currently one of the most popular ingredients of modern web application
 In this talk, we will have a look at general patterns how to use React components together with Reflux stores and actions to build a responsive web application. Here, the focus is on state: When and where to (not) have it and how to deal with it using the facilities React and Reflux are offering. We illustrate these concepts with a small web shop example. In addition to that, we also address common mistakes and how to avoid them.
 \end{comment}
 
-\begin{frame}\frametitle{Drilled Down Webshop Example}
-\centering
-\includegraphics[width=.99\linewidth,height=.85\textheight,keepaspectratio]{pics/ExampleWebshop.png}
-\end{frame}
+\webshopexample
 
 \begin{frame}\frametitle{Why React?}
 \centering
@@ -102,6 +99,8 @@ class Article extends React.Component {
 }
 \end{lstlisting}
 \end{frame}
+
+\webshopexample
 
 \begin{frame}\frametitle{Components}
 \centering
@@ -291,6 +290,8 @@ class ExampleWebshop extends Reflux.Component {
 }
 \end{lstlisting}
 \end{frame}
+
+\webshopexample
 
 \begin{frame}\frametitle{Problematic State Handling}
 \begin{itemize}
