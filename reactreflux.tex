@@ -384,13 +384,14 @@ class Article extends Reflux.Component {
 \end{frame}
 
 \begin{frame}\frametitle{How to handle state}
-\vspace*{\fill}
-\begin{center}
-\begin{minipage}{.6\textwidth}
-DON'T!
-\end{minipage}
-\end{center}
-\vfill % equivalent to \vspace{\fill}
+\centering
+\visible<2->{
+\begin{tikzpicture}
+\draw[red,line width=1cm] (3,3) circle (3cm);
+\draw[red,line width=1cm] (1,5) -- (5,1);
+\node at (3,3) {\Huge DON'T!};
+\end{tikzpicture}
+}
 \end{frame}
 
 \begin{frame}\frametitle{How to handle state\newline(if you have to)}
