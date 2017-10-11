@@ -6,8 +6,9 @@
 \usepackage{fontspec}
 \setmainfont{Verdana}
 \setsansfont{Verdana}
-\usepackage{tikz}
 \usepackage{comment}
+\usepackage{tcolorbox}
+\usepackage{tikz}
 \usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,automata,calc,shapes.arrows,fadings}
 
 \include{commands}
@@ -20,10 +21,11 @@
 \title[React and Reflux]{REACT AND REFLUX:}
 \subtitle{Components, Actions, Stores, and State}
 \author[P.\ Baues, T.\ Str\"oder]{Philip Baues and Thomas Str\"oder}
-\date{28./29.\ September 2017}
-\newcommand{\location}{\texttt{code.talks} Hamburg}
+\date{4.\textendash6.\ October 2017}
+\newcommand{\location}{\textsf{TopConf} D\"usseldorf}
 
-\metroslide
+% \metroslide
+\topconftitle
 
 {\setbeamercolor{background canvas}{bg=metroblue}
 \begin{frame}[plain]
@@ -38,10 +40,7 @@ React is currently one of the most popular ingredients of modern web application
 In this talk, we will have a look at general patterns how to use React components together with Reflux stores and actions to build a responsive web application. Here, the focus is on state: When and where to (not) have it and how to deal with it using the facilities React and Reflux are offering. We illustrate these concepts with a small web shop example. In addition to that, we also address common mistakes and how to avoid them.
 \end{comment}
 
-\begin{frame}\frametitle{Drilled down webshop example}
-\centering
-\includegraphics[width=.99\linewidth,height=.85\textheight,keepaspectratio]{pics/ExampleWebshop.png}
-\end{frame}
+\webshopexample
 
 \begin{frame}\frametitle{Why React?}
 \centering
@@ -100,6 +99,8 @@ class Article extends React.Component {
 }
 \end{lstlisting}
 \end{frame}
+
+\webshopexample
 
 \begin{frame}\frametitle{Components}
 \centering
@@ -290,7 +291,9 @@ class ExampleWebshop extends Reflux.Component {
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}\frametitle{Problematic state handling}
+\webshopexample
+
+\begin{frame}\frametitle{Problematic State Handling}
 \begin{itemize}
 \visible<1->{\item Getter in stores}
 \visible<2->{\item Unnecessary state in components}
@@ -298,7 +301,7 @@ class ExampleWebshop extends Reflux.Component {
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Getter in stores \textendash{} Example}
+\begin{frame}[fragile]\frametitle{Getter in Stores \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 const BasketStore =  Reflux.createStore({
     constructor() {
@@ -320,7 +323,7 @@ const BasketStore =  Reflux.createStore({
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Getter in stores \textendash{} Example}
+\begin{frame}[fragile]\frametitle{Getter in Stores \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 class Article extends Reflux.Component {
     render() {
@@ -342,7 +345,7 @@ class Article extends Reflux.Component {
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Unnecessary state in components \textendash{} Example}
+\begin{frame}[fragile]\frametitle{Unnecessary State in Components \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 class Article extends Reflux.Component {
     constructor(props) {
@@ -362,7 +365,7 @@ class Article extends Reflux.Component {
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{State vs. props \textendash{} Example}
+\begin{frame}[fragile]\frametitle{State vs. Props \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 class Article extends Reflux.Component {
     constructor(props) {
@@ -381,17 +384,18 @@ class Article extends Reflux.Component {
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}\frametitle{How to handle state}
-\vspace*{\fill}
-\begin{center}
-\begin{minipage}{.6\textwidth}
-DON'T!
-\end{minipage}
-\end{center}
-\vfill % equivalent to \vspace{\fill}
+\begin{frame}\frametitle{How to Handle State}
+\centering
+\visible<2->{
+\begin{tikzpicture}
+\draw[red,line width=1cm] (3,3) circle (3cm);
+\draw[red,line width=1cm] (1,5) -- (5,1);
+\node at (3,3) {\Huge DON'T!};
+\end{tikzpicture}
+}
 \end{frame}
 
-\begin{frame}\frametitle{How to handle state\newline(if you have to)}
+\begin{frame}\frametitle{How to Handle State\newline(if you have to)}
 \begin{itemize}
 \visible<1->{\item Access state from as few components as possible}
 \visible<2->{\item Do not alter state in a component directly}
@@ -400,7 +404,7 @@ DON'T!
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]\frametitle{Stateless component \textendash{} Example}
+\begin{frame}[fragile]\frametitle{Stateless Component \textendash{} Example}
 \begin{lstlisting}[style=htmlcssjs]
 const ExampleWebshopHeader = ({sumPrice}) => {
     return (
@@ -447,7 +451,12 @@ export default ExampleWebshopHeader;
 \visible<4->{\node at (3.5,6) {\url{http://domain/service/endpoint}};}
 \visible<4->{\node at (3.5,4.5) [single arrow,shape border uses incircle,
 shape border rotate=270,fill=metroblue,minimum height=2cm,path fading=fade left,fading transform={rotate=270}] {};}
+\visible<14->{\node at (4.5,1) {\begin{tcolorbox}[width=8cm,center upper,colback=metroblue,colframe=metroyellow,%
+colupper=white,arc=4pt]\Large\url{github.com/techmetro}\\\url{metro-cc.com/transformers}\end{tcolorbox}};}
+\visible<14->{\node at (8.5,-0.8) {Thank you!};}
 \end{tikzpicture}
 \end{frame}
+
+\topconfend
 
 \end{document}
