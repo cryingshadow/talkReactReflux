@@ -11,7 +11,7 @@
 \newcommand{\insertauthorpic}{\includegraphics[width=1.446cm]{pics/philip.png}\includegraphics[width=1.446cm]{pics/thomas.jpg}}
 \newcommand{\footertext}{%
   \fontsize{5}{5}\selectfont\begin{minipage}{3mm}\vspace*{-1pt}\raggedleft\insertframenumber\end{minipage}\hspace*{3mm}
-  © METRO AG.\hspace*{3mm}\insertshortauthor{}: \insertshorttitle{}
+  © METRONOM GmbH\hspace*{3mm}\insertshortauthor{}: \insertshorttitle{}
 }
 \newcommand{\datesize}{\fontsize{10}{10}\selectfont}
 \newcommand{\metroslide}{%
@@ -36,7 +36,8 @@
 \node (subtitle) [below=0.6 of title.west,anchor=west] {\fontsize{12}{12}\selectfont\insertsubtitle\par};
 \node[topconfgrey,anchor=south west] (author) at ($(current page.south west)+(1,3.5)$) {Philip Baues, Thomas Str\"oder};
 \node[topconfgrey] (company) [below=0.5 of author.west,anchor=west] {METRO};
-\node[anchor=south] (metro) at ($(current page.south)+(0,0.1)$) {\includegraphics[height=1cm]{pics/metro.png}};
+%\node[anchor=south] (metro) at ($(current page.south)+(0,0.1)$) {\includegraphics[height=1cm]{pics/metro.png}};
+\node[anchor=south] (metro) at ($(current page.south)+(0,0.1)$) {\includegraphics[height=1cm]{pics/Metronom.png}};
 \end{tikzpicture}
 \end{frame}
 }
@@ -48,12 +49,12 @@
 \fill[black] ($(current page.south west)+(0,1.2)$) rectangle ($(current page.south east)+(0,1.22)$);
 \fill[topconfyellow] ($(current page.south west)+(0,1.22)$) rectangle (current page.north east);
 \topconflogo
-\node[topconfred,anchor=west] (name1) at ($(current page.west)+(0.5,1.5)$) {\large \textbf{Philip Baues}};
+\node[topconfred,anchor=west] (name1) at ($(current page.west)+(0.5,1.5)$) {\large \textbf{Philip Bernardy}};
 \node[topconfred] (name2) [below=0.5 of name1.west,anchor=west] {\large \textbf{Thomas Str\"oder}\phantom{y}};
-\node[topconfred] (company) [below=of name2.west,anchor=west] {\large \textbf{METRO}};
-\node[topconfred] (email1) [right=1.1 of name1.east,anchor=west] {\large \textbf{\url{philip.baues@metrosystems.net}}};
-\node[topconfred] (email2) [below=0.5 of email1.west,anchor=west] {\large \textbf{\url{thomas.stroeder@metrosystems.net}}};
-\node[topconfred] (url) [below=of email2.west,anchor=west] {\large \textbf{\url{metro-cc.com/transformers}}};
+\node[topconfred] (company) [below=of name2.west,anchor=west] {\large \textbf{METRONOM}};
+\node[topconfred] (email1) [right=1.1 of name1.east,anchor=west] {\large \textbf{\url{philip.bernardy@metronom.com}}};
+\node[topconfred] (email2) [below=0.5 of email1.west,anchor=west] {\large \textbf{\url{thomas.stroeder@metronom.com}}};
+\node[topconfred] (url) [below=of email2.west,anchor=west] {\large \textbf{\url{www.metronom.com}}};
 \end{tikzpicture}
 \end{frame}
 }

@@ -1,4 +1,3 @@
-%TODO
 \mode<presentation>
 {
 \setbeamerfont{block title}{size={}}
@@ -15,7 +14,8 @@
 \setbeamertemplate{footline}{
   \begin{tikzpicture}[remember picture,overlay]
   \draw[metroblue] ($(current page.south west)+(0.6,0.6)$) -- ($(current page.south east)+(-3.5,0.6)$);
-  \node (logosmall) at ($(current page.south east)+(-0.2,-0.1)$) [anchor=south east] {\includegraphics[height=8mm]{pics/metro.png}};
+ % \node (logosmall) at ($(current page.south east)+(-0.2,-0.1)$) [anchor=south east] {\includegraphics[height=8mm]{pics/metro.png}};
+  \node (logosmall) at ($(current page.south east)+(-0.2,-0.1)$) [anchor=south east] {\includegraphics[height=6mm]{pics/Metronom.png}};
   \node[metroblue] (textline) at ($(current page.south west)+(0.8,0.13)$) [anchor=south west] {\footertext{}};
   \end{tikzpicture}
 }
